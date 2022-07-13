@@ -60,8 +60,7 @@ class _characterState extends State<character> {
             IconButton(
                 onPressed: () {
                   setState(() {
-                    situation == false ? situation = true : situation = false;
-                    _character = _characterSearch;
+                    situation = !situation;
                   });
                 },
                 icon: const Icon(Icons.search_outlined))

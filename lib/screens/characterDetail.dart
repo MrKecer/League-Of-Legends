@@ -131,7 +131,7 @@ class _characterDetailState extends State<characterDetail> {
             TextButton(
               onPressed: () {
                 setState(() {
-                  detail == true ? detail = false : detail = true;
+                  detail = !detail;
                 });
               },
               child: const Text("Karakter Detayları"),
