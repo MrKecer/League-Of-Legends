@@ -141,19 +141,7 @@ class _characterState extends State<character> {
                       context,
                       MaterialPageRoute(
                         builder: (context) => characterDetail(
-                          id: _character[index].id,
-                          name: _character[index].name,
-                          title: _character[index].title,
-                          image: _character[index].image,
-                          description: _character[index].description,
-                          tags: _character[index].tags,
-                          hp: _character[index].stats!.hp,
-                          mp: _character[index].stats!.mp,
-                          movespeed: _character[index].stats!.movespeed,
-                          armor: _character[index].stats!.armor,
-                          attackspeed: _character[index].stats!.attackspeed,
-                          attackdamage: _character[index].stats!.attackdamage,
-                          attackrange: _character[index].stats!.attackrange,
+                          characters: _character[index],
                         ),
                       ),
                     );
