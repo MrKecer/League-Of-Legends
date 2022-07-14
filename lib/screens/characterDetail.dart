@@ -1,35 +1,13 @@
 import 'package:flutter/material.dart';
 
-class characterDetail extends StatefulWidget {
-  String? id;
-  String? name;
-  String? title;
-  String? image;
-  String? description;
-  List? tags;
-  double? hp;
-  double? mp;
-  double? movespeed;
-  double? armor;
-  double? attackspeed;
-  double? attackdamage;
-  double? attackrange;
+import 'package:leagueoflegends/models/character.dart';
+import 'package:leagueoflegends/screens/character.dart';
 
+class characterDetail extends StatefulWidget {
+  Character? characters;
   characterDetail({
     Key? key,
-    this.id,
-    this.name,
-    this.title,
-    this.image,
-    this.description,
-    this.tags,
-    this.hp,
-    this.mp,
-    this.movespeed,
-    this.armor,
-    this.attackspeed,
-    this.attackdamage,
-    this.attackrange,
+    this.characters,
   }) : super(key: key);
 
   @override
@@ -42,26 +20,28 @@ class _characterDetailState extends State<characterDetail> {
   Widget build(BuildContext context) {
     List<Map> _character = <Map>[
       {
-        "Name:": widget.name,
+        "Name:": widget.characters!.name.toString(),
       },
       {
-        "Nick:": widget.title,
+        "Nick:": widget.characters!.title.toString(),
       },
-      {"Description:": widget.description},
+      {"Description:": widget.characters!.description.toString()},
     ];
     List<Map> _stats = [
-      {"Hp: ": widget.hp},
-      {"Mp: ": widget.mp},
-      {"Movespeed: ": widget.movespeed},
-      {"Armor: ": widget.armor},
-      {"Attackspeed: ": widget.attackspeed},
-      {"Attackdamage: ": widget.attackdamage},
-      {"Attackrange: ": widget.attackrange},
+      {"Hp: ": widget.characters!.stats!.hp},
+      {"Mp: ": widget.characters!.stats!.mp},
+      {"Movespeed: ": widget.characters!.stats!.movespeed},
+      {"Armor: ": widget.characters!.stats!.armor},
+      {"Attackspeed: ": widget.characters!.stats!.attackspeed},
+      {"Attackdamage: ": widget.characters!.stats!.attackdamage},
+      {
+        "Attackrange: ": widget.characters!.stats!.attackrange,
+      }
     ];
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title!),
+        title: Text(widget.characters!.name.toString()),
         titleSpacing: 0,
         actions: const [
           IconButton(
@@ -80,7 +60,9 @@ class _characterDetailState extends State<characterDetail> {
                 height: 120,
                 width: 120,
                 decoration: BoxDecoration(
-                    image: DecorationImage(image: NetworkImage(widget.image!)),
+                    image: DecorationImage(
+                        image:
+                            NetworkImage(widget.characters!.image.toString())),
                     boxShadow: [
                       BoxShadow(
                         color: Colors.blueGrey.shade600,
@@ -122,7 +104,7 @@ class _characterDetailState extends State<characterDetail> {
                   style: TextStyle(fontSize: 18, fontStyle: FontStyle.italic),
                 ),
                 title: Text(
-                  widget.tags!.join(", ").toString(),
+                  widget.characters!.tags!.join(", ").toString(),
                   style: const TextStyle(
                       fontSize: 18, fontStyle: FontStyle.normal),
                 ),
